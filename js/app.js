@@ -9,24 +9,24 @@
   /* ---------- 分类 ---------- */
   const CATS = {
     expense: [
-      { id: 'food',      name: '餐饮', icon: '🍜', color: '#FF7A45' },
-      { id: 'transport', name: '交通', icon: '🚌', color: '#4A9EFF' },
-      { id: 'shopping',  name: '购物', icon: '🛍️', color: '#FF5C93' },
-      { id: 'fun',       name: '娱乐', icon: '🎮', color: '#9B6BFF' },
-      { id: 'home',      name: '居住', icon: '🏠', color: '#FFB020' },
-      { id: 'daily',     name: '日用', icon: '🧻', color: '#2EC4B6' },
-      { id: 'medical',   name: '医疗', icon: '💊', color: '#41C08A' },
-      { id: 'study',     name: '学习', icon: '📚', color: '#3D8BFD' },
-      { id: 'social',    name: '人情', icon: '🎁', color: '#F2668B' },
-      { id: 'other',     name: '其他', icon: '📦', color: '#A5ACBB' }
+      { id: 'food',      name: '餐饮', icon: '🍜', color: '#C4735B' },
+      { id: 'transport', name: '交通', icon: '🚌', color: '#8FA3B0' },
+      { id: 'shopping',  name: '购物', icon: '🛍️', color: '#C89AA6' },
+      { id: 'fun',       name: '娱乐', icon: '🎮', color: '#A493B5' },
+      { id: 'home',      name: '居住', icon: '🏠', color: '#B39B7F' },
+      { id: 'daily',     name: '日用', icon: '🧻', color: '#8CA394' },
+      { id: 'medical',   name: '医疗', icon: '💊', color: '#7F9E9B' },
+      { id: 'study',     name: '学习', icon: '📚', color: '#A9A07E' },
+      { id: 'social',    name: '人情', icon: '🎁', color: '#D0A88F' },
+      { id: 'other',     name: '其他', icon: '📦', color: '#ADA9A3' }
     ],
     income: [
-      { id: 'salary',   name: '工资', icon: '💰', color: '#22B573' },
-      { id: 'bonus',    name: '奖金', icon: '🏆', color: '#FFB020' },
-      { id: 'invest',   name: '理财', icon: '📈', color: '#FF7A45' },
-      { id: 'parttime', name: '兼职', icon: '💼', color: '#4A9EFF' },
-      { id: 'gift',     name: '红包', icon: '🧧', color: '#FF5C93' },
-      { id: 'other_in', name: '其他', icon: '✨', color: '#A5ACBB' }
+      { id: 'salary',   name: '工资', icon: '💰', color: '#7E8F79' },
+      { id: 'bonus',    name: '奖金', icon: '🏆', color: '#C4A265' },
+      { id: 'invest',   name: '理财', icon: '📈', color: '#8FA3B0' },
+      { id: 'parttime', name: '兼职', icon: '💼', color: '#A493B5' },
+      { id: 'gift',     name: '红包', icon: '🧧', color: '#C4735B' },
+      { id: 'other_in', name: '其他', icon: '✨', color: '#ADA9A3' }
     ]
   };
   const CAT_MAP = {};
@@ -135,7 +135,7 @@
       if (ge) sub.push('支出 ¥' + money(ge));
       if (gi) sub.push('收入 ¥' + money(gi));
       const rows = g.items.map((r) => {
-        const c = CAT_MAP[r.type + ':' + r.category] || { name: '未分类', icon: '📦', color: '#A5ACBB' };
+        const c = CAT_MAP[r.type + ':' + r.category] || { name: '未分类', icon: '📦', color: '#ADA9A3' };
         const color = hexA(c.color, 0.13);
         return '<div class="rec-item" data-id="' + r.id + '">' +
           '<div class="rec-ic" style="background:' + color + '">' + c.icon + '</div>' +
@@ -172,7 +172,7 @@
       map[k] += r.amount;
     });
     const groups = Object.keys(map).map((k) => {
-      const c = CAT_MAP[statType + ':' + k] || { name: '未分类', icon: '📦', color: '#A5ACBB' };
+      const c = CAT_MAP[statType + ':' + k] || { name: '未分类', icon: '📦', color: '#ADA9A3' };
       return { name: c.name, icon: c.icon, color: c.color, value: round2(map[k]) };
     }).sort((a, b) => b.value - a.value);
 
@@ -183,7 +183,7 @@
 
     const rank = $('#catRank');
     if (!groups.length) {
-      rank.innerHTML = '<div class="rank-row" style="text-align:center;color:#8A8F9C;padding:34px 0;font-size:13.5px">本月暂无' +
+      rank.innerHTML = '<div class="rank-row" style="text-align:center;color:#9A9088;padding:34px 0;font-size:13.5px">本月暂无' +
         (statType === 'expense' ? '支出' : '收入') + '记录</div>';
       return;
     }
@@ -220,7 +220,7 @@
     if (!groups.length || !total) {
       ctx.beginPath();
       ctx.arc(cx, cy, r, 0, Math.PI * 2);
-      ctx.strokeStyle = '#EFF1F6';
+      ctx.strokeStyle = '#EFE9E2';
       ctx.stroke();
       return;
     }
